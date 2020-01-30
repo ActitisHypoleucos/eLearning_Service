@@ -1,6 +1,6 @@
 using System;
 
-namespace eLearning_Trying_Database.Models
+namespace eLearningService.Models.ViewModels
 {
     public class ErrorViewModel
     {

@@ -5,7 +5,7 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace eLearning_Trying_Database.Models
+namespace eLearningService.Models
 {
     public class CLS_DB
     {
@@ -15,7 +15,7 @@ namespace eLearning_Trying_Database.Models
   * ***************************************************************************************
   */
         // Definizione delle variabuili della Classe
-        private const string StringaDiConnessione = "Data Source=AULA2-PC04;Initial Catalog=eLearning;User ID=sa;Password=Pa$$w0rd1!";
+        private const string StringaDiConnessione = @"Data Source=AULA2-PC10\SQLEXPRESS;Initial Catalog=eLearning;User ID=sa;Password=Pa$$w0rd1!";
 
         public DataTable MySelect(string SqlString)
         {

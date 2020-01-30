@@ -8,8 +8,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using eLearningService.Models.Query;
 
-namespace eLearning_Trying_Database
+namespace eLearningService
 {
     public class Startup
     {
@@ -24,6 +25,7 @@ namespace eLearning_Trying_Database
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddTransient<IQuery, Query>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

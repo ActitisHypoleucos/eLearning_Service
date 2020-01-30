@@ -5,24 +5,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using eLearning_Trying_Database.Models;
+using eLearningService.Models.ViewModels;
+using eLearningService.Models.Query;
 using System.Data;
 
-namespace eLearning_Trying_Database.Controllers
+namespace eLearningService.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IQuery _query;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IQuery query)
         {
-            _logger = logger;
+            _query = query;
         }
 
         public JsonResult Index()
         {
-            CLS_DB dibbi = new CLS_DB();
-            DataTable tabbola = dibbi.MySelect("Select Nome_Corso from Corsi");
+            DataTable tabbola = _query.OttieniCorsi();
             List<CorsoViewModel> listaCorsi = new List<CorsoViewModel>();
             //per ogni riga del datatable...
             foreach(DataRow corsoRow in tabbola.Rows)
