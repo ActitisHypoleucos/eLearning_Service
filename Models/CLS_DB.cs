@@ -326,8 +326,6 @@ namespace eLearningService.Models
                                 sqlQueryResult.GetBytes(0, 0, blob, 0, blob.Length);
                                 file = blob;
                                 esito = true;
-
-                                return file;
                             }
                             catch (Exception)
                             {

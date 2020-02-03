@@ -1,27 +1,27 @@
+using System;
 using System.Data;
+using eLearningService.Models;
 
 namespace eLearning_Service_MK1.Models.ViewModels
-{/*
+{
     public class MaterialiViewModel
     {
         public int IDMateriali { get; set; }
         public byte[] Materiale { get; set; }
-        public string Estensone { get; set; }
-        public int IDLezione { get; set; }
+        public string Estensione { get; set; }
+        //public int IDLezione { get; set; }
 
         public static MaterialiViewModel FromDataRow(DataRow itemRow)
         {
+            CLS_DB dibbi = new CLS_DB();
             try
             {
                 var item = new MaterialiViewModel()
                 {
-                    IdMateriali = Convert.ToInt32(itemRow["Id_Corso_PK"]),
-                    Materiale = Convert.toByte(itemRow["Materiale"]),
-                    Estensione = Convert.ToDouble(itemRow["Costo"]),
-                    TotaleOre = Convert.ToInt32(itemRow["Totale_Ore"]),
-                    DataInizio = Convert.ToDateTime(itemRow["Data_Inizio"]),
-                    DataFine = Convert.ToDateTime(itemRow["Data_Fine"]),
-                    AssenzeLimite = Convert.ToInt32(itemRow["Assenze_Limite"])
+                    IDMateriali = Convert.ToInt32(itemRow["Id_Materiale_PK"]),
+                    Materiale = dibbi.getFileDB(Convert.ToInt32(itemRow["Id_Materiale_PK"])),
+                    Estensione = Convert.ToString(itemRow["Tipo"])
+                    //IDLezione = Convert.ToInt32(itemRow[""])
                 };
             return item;
             }            
@@ -30,5 +30,5 @@ namespace eLearning_Service_MK1.Models.ViewModels
                 return null;
             }            
         }
-    }*/
+    }
 }
