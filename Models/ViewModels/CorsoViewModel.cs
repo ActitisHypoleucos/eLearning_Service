@@ -13,21 +13,21 @@ namespace eLearningService.Models.ViewModels
         public DateTime DataFine { get; set; }
         public int AssenzeLimite { get; set; }
 
-        public static CorsoViewModel FromDataRow(DataRow corsoRow)
+        public static CorsoViewModel FromDataRow(DataRow itemRow)
         {
             try
             {
-                var corso = new CorsoViewModel()
+                var item = new CorsoViewModel()
                 {
-                    IdCorso = Convert.ToInt32(corsoRow["Id_Corso_PK"]),
-                    NomeCorso = Convert.ToString(corsoRow["Nome_Corso"]),
-                    Costo = Convert.ToDouble(corsoRow["Costo"]),
-                    TotaleOre = Convert.ToInt32(corsoRow["Totale_Ore"]),
-                    DataInizio = Convert.ToDateTime(corsoRow["Data_Inizio"]),
-                    DataFine = Convert.ToDateTime(corsoRow["Data_Fine"]),
-                    AssenzeLimite = Convert.ToInt32(corsoRow["Assenze_Limite"])
+                    IdCorso = Convert.ToInt32(itemRow["Id_Corso_PK"]),
+                    NomeCorso = Convert.ToString(itemRow["Nome_Corso"]),
+                    Costo = Convert.ToDouble(itemRow["Costo"]),
+                    TotaleOre = Convert.ToInt32(itemRow["Totale_Ore"]),
+                    DataInizio = Convert.ToDateTime(itemRow["Data_Inizio"]),
+                    DataFine = Convert.ToDateTime(itemRow["Data_Fine"]),
+                    AssenzeLimite = Convert.ToInt32(itemRow["Assenze_Limite"])
                 };
-            return corso;
+            return item;
             }            
             catch (System.Exception)
             {

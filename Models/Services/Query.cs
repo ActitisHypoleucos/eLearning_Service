@@ -1,7 +1,7 @@
 using System.Data;
 using eLearningService.Models;
 
-namespace eLearningService.Models.Query
+namespace eLearningService.Models.Services
 {
     public class Query : IQuery
     {
@@ -11,5 +11,12 @@ namespace eLearningService.Models.Query
             DataTable tabbola = dibbi.MySelect("Select * from Corsi");
             return tabbola;
         }
+
+        
+
+        
+
+
+        //creare le funzioni di servizio
     }
 }

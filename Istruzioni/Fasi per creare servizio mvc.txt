@@ -1,0 +1,9 @@
+Fasi per creare un servizio mvc
+
+creo modello di dati da rappresentare
+
+In una classe servizio:
+-creare la funzione che estragga i dati 
+-crei la relativa interfaccia
+
+dependency injenection nella startup
