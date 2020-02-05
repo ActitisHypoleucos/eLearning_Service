@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Controllers",
-    "\\Istruzioni"
+    "\\Models"
   ],
-  "SelectedNode": "\\Controllers\\HomeController.cs",
+  "SelectedNode": "\\Models\\CLS_DB.cs",
   "PreviewInSolutionExplorer": false
 }

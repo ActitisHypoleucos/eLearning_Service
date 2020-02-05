@@ -19,11 +19,14 @@ namespace eLearningService.Models.Services
             return tabbola;
         }
 
+        DataTable IQuery.OttieniDashboardADMIN()
+        {
+            CLS_DB dibbi = new CLS_DB();
+            DataTable tabbola = dibbi.MySelect("Select * from ADMIN_Dashboard_Corsi");
+            return tabbola;
+        }
         
-
-        
-
-
         //creare le funzioni di servizio
+        
     }
 }

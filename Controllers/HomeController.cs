@@ -25,20 +25,6 @@ namespace eLearningService.Controllers
             _query = query;
         }
 
-        public JsonResult Index()
-        {
-            DataTable tabbola = _query.OttieniCorsi();
-            List<CorsoViewModel> list = new List<CorsoViewModel>();
-            //per ogni riga del datatable...
-            foreach(DataRow riga in tabbola.Rows)
-            {
-                //converte in oggetto Corsi un record di tabella
-                CorsoViewModel vista = CorsoViewModel.FromDataRow(riga);
-                list.Add(vista);
-            }
-            return Json(list);
-        }
-
         public IActionResult Privacy()
         {
             return View();
@@ -50,6 +36,22 @@ namespace eLearningService.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         
+        public JsonResult Index()
+        {
+            DataTable tabbola = _query.OttieniCorsi();
+            List<CorsoViewModel> list = new List<CorsoViewModel>();
+            //per ogni riga del datatable...
+            foreach(DataRow riga in tabbola.Rows)
+            {
+                //converte in oggetto Corsi un record di tabella
+                CorsoViewModel item = new CorsoViewModel(riga);
+                list.Add(item);
+            }
+            return Json(list);
+        }
+
+        
+        
         public JsonResult FileView()
         {
             DataTable tabbola = _query.OttieniPNG();
@@ -58,23 +60,22 @@ namespace eLearningService.Controllers
             foreach(DataRow riga in tabbola.Rows)
             {
                 //converte in oggetto Corsi un record di tabella
-                MaterialiViewModel vista = MaterialiViewModel.FromDataRow(riga);
-                list.Add(vista);
+                MaterialiViewModel item = MaterialiViewModel.FromDataRow(riga);
+                list.Add(item);
             }
             return Json(list);      
         }
 
-        private List<MaterialiViewModel> GetImages()
+        private JsonResult ADMIN_Dashboard_Corsi()
         {
-            DataTable IMGTAB= new DataTable();
-            IMGTAB = _query.OttieniPNG();
-            List<MaterialiViewModel> images = new List<MaterialiViewModel>();
-            foreach (DataRow riga in IMGTAB.Rows)
+            DataTable tabbola = _query.OttieniDashboardADMIN();
+            List<ADMIN_Dashboard_Corsi> list = new List<ADMIN_Dashboard_Corsi>();
+            foreach (DataRow riga in tabbola.Rows)
             {
-                MaterialiViewModel Immagine = MaterialiViewModel.FromDataRow(riga);
-                images.Add(Immagine);
+                ADMIN_Dashboard_Corsi item = new ADMIN_Dashboard_Corsi(riga);
+                list.Add(item);
             }
-            return images;
+             return Json(list);
         }
     }
 }

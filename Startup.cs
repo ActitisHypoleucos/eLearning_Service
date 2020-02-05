@@ -43,7 +43,15 @@ namespace eLearningService
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            
+            /*
+            app.UseCors( x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
+            */
+            
             app.UseRouting();
 
             app.UseAuthorization();

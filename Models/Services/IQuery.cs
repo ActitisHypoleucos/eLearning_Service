@@ -5,5 +5,6 @@ namespace eLearningService.Models.Services
     {
          DataTable OttieniCorsi();
          DataTable OttieniPNG();
+         DataTable OttieniDashboardADMIN();
     }
 }

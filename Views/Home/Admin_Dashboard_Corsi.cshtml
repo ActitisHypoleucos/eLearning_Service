@@ -1,0 +1,15 @@
+@using eLearningService.Models.ViewModels
+@model List<ADMIN_Dashboard_Corsi>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@foreach (ADMIN_Dashboard_Corsi item in Model)
+{
+    <p>@item.nome</p>
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>

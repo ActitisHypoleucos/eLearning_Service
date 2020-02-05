@@ -265,7 +265,7 @@ namespace eLearningService.Models
             bool esito = false;
 
             using (SqlConnection connection = new SqlConnection(StringaDiConnessione))
-            using (var sqlQuery = new SqlCommand(@"SELECT [Materiale] FROM [TestPerVarBinary].[dbo].[Materiale] WHERE [Id_Materiale_PK] = @ID", connection))
+            using (var sqlQuery = new SqlCommand(@"SELECT Materiale FROM [Materiali_Didattici WHERE [Id_Materiale_PK] = @ID", connection))
             {
                 connection.Open();
                 sqlQuery.Parameters.AddWithValue("@ID", Nome);
@@ -311,7 +311,7 @@ namespace eLearningService.Models
             using (SqlConnection connection = new SqlConnection())
             {
                 connection.ConnectionString = StringaDiConnessione;
-                using (var sqlQuery = new SqlCommand(@"SELECT [Materiale] FROM [TestPerVarBinary].[dbo].[Materiale] WHERE [ID] = @Id", connection)) //Adonet
+                using (var sqlQuery = new SqlCommand(@"SELECT [Materiale] FROM Materiali_Didattici WHERE [Id_Materiale_PK] = @Id", connection)) //Adonet
                 {
                     connection.Open();
                     sqlQuery.Parameters.AddWithValue("@Id", Id);
