@@ -2,13 +2,15 @@ using System;
 using System.Data;
 using eLearningService.Models;
 
-namespace eLearning_Service_MK1.Models.ViewModels
+namespace eLearningService.Models.ViewModels
 {
     public class MaterialiViewModel
     {
-        public int IDMateriali { get; set; }
+        public int ID { get; set; }
         public byte[] Materiale { get; set; }
         public string Estensione { get; set; }
+        public bool IsSelected { get;set; }
+        
         //public int IDLezione { get; set; }
 
         public static MaterialiViewModel FromDataRow(DataRow itemRow)
@@ -18,7 +20,7 @@ namespace eLearning_Service_MK1.Models.ViewModels
             {
                 var item = new MaterialiViewModel()
                 {
-                    IDMateriali = Convert.ToInt32(itemRow["Id_Materiale_PK"]),
+                    ID = Convert.ToInt32(itemRow["Id_Materiale_PK"]),
                     Materiale = dibbi.getFileDB(Convert.ToInt32(itemRow["Id_Materiale_PK"])),
                     Estensione = Convert.ToString(itemRow["Tipo"])
                     //IDLezione = Convert.ToInt32(itemRow[""])

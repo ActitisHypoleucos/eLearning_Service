@@ -12,6 +12,13 @@ namespace eLearningService.Models.Services
             return tabbola;
         }
 
+        DataTable IQuery.OttieniPNG()
+        {
+            CLS_DB dibbi = new CLS_DB();
+            DataTable tabbola = dibbi.MySelect("Select * from Materiali_Didattici");
+            return tabbola;
+        }
+
         
 
         

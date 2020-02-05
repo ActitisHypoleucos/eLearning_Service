@@ -134,7 +134,7 @@ namespace eLearningService.Models
 
     #endregion
 
-    #region STORED PROCEDURE(query,List<tring>Parametri)
+    #region STORED PROCEDURE(query,List<string>Parametri)
 
         public void EseguiStoredProcedure(string StringaComandoSQL, List<string> ParametroStoredProcedure,
             List<string> ValoreParametro)
@@ -182,7 +182,7 @@ namespace eLearningService.Models
     #endregion
 
     #region SELECT STORE PROCEDURE
-        /*
+        
         public DataTable EseguiStoredProcedureLettura(string StringaComandoSQL)
 
         {
@@ -215,7 +215,7 @@ namespace eLearningService.Models
             }
             return Table;
         }
-        */
+        
     #endregion
 
 #region FILES - DB
