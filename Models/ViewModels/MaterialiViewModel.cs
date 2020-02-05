@@ -22,7 +22,8 @@ namespace eLearningService.Models.ViewModels
                 {
                     ID = Convert.ToInt32(itemRow["Id_Materiale_PK"]),
                     Materiale = dibbi.getFileDB(Convert.ToInt32(itemRow["Id_Materiale_PK"])),
-                    Estensione = Convert.ToString(itemRow["Tipo"])
+                    Estensione = Convert.ToString(itemRow["Tipo"]),
+                    IsSelected = false
                     //IDLezione = Convert.ToInt32(itemRow[""])
                 };
             return item;

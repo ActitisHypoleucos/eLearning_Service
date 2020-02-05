@@ -52,7 +52,7 @@ namespace eLearningService.Controllers
         
         public JsonResult FileView()
         {
-            DataTable tabbola = _query.OttieniCorsi();
+            DataTable tabbola = _query.OttieniPNG();
             List<MaterialiViewModel> list = new List<MaterialiViewModel>();
             //per ogni riga del datatable...
             foreach(DataRow riga in tabbola.Rows)
@@ -74,7 +74,6 @@ namespace eLearningService.Controllers
                 MaterialiViewModel Immagine = MaterialiViewModel.FromDataRow(riga);
                 images.Add(Immagine);
             }
-            
             return images;
         }
     }
