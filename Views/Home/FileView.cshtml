@@ -1,40 +1,15 @@
 @using eLearningService.Models.ViewModels
-@model IEnumerable<eLearningService.Models.ViewModels.MaterialiViewModel>
- 
+@model List<MaterialiViewModel>
 @{
-    Layout = null;
+    ViewData["Title"] = "Home Page";
 }
- 
-<!DOCTYPE html>
- 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width"/>
-    <title>FileView</title>
-</head>
-<body>
-    @using (Html.BeginForm("FileView", "Home", FormMethod.Post))
-    {
-        <span>Select Image:</span>
-        <select name="imageId" onchange="document.forms[0].submit();">
-            <option value="0">Please select</option>
-            @foreach (MaterialiViewModel image in Model)
-            {
-                if (image.IsSelected)
-                {
-                    <option value="@image.ID" selected="selected">@image.Estensione</option>
-                }
-                else
-                {
-                    <option value="@image.ID">@image.ID</option>
-                }
-            }
-        </select>
-    }
-    @if (ViewBag.Base64String != null)
-    {
-        <hr/>
-        <img alt="" src="@ViewBag.Base64String" style="height:100px;width:100px;"/>
-    }
-</body>
-</html>
+
+@foreach (MaterialiViewModel item in Model)
+{
+    <p>@item.Materiale</p>
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>

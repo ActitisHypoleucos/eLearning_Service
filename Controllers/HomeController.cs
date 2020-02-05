@@ -25,18 +25,18 @@ namespace eLearningService.Controllers
             _query = query;
         }
 
-        public IActionResult Index()
+        public JsonResult Index()
         {
             DataTable tabbola = _query.OttieniCorsi();
-            List<CorsoViewModel> listaCorsi = new List<CorsoViewModel>();
+            List<CorsoViewModel> list = new List<CorsoViewModel>();
             //per ogni riga del datatable...
-            foreach(DataRow corsoRow in tabbola.Rows)
+            foreach(DataRow riga in tabbola.Rows)
             {
                 //converte in oggetto Corsi un record di tabella
-                CorsoViewModel corso = CorsoViewModel.FromDataRow(corsoRow);
-                listaCorsi.Add(corso);
+                CorsoViewModel vista = CorsoViewModel.FromDataRow(riga);
+                list.Add(vista);
             }
-            return View(listaCorsi);
+            return Json(list);
         }
 
         public IActionResult Privacy()
@@ -50,23 +50,18 @@ namespace eLearningService.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         
-        public IActionResult FileView()
+        public JsonResult FileView()
         {
-            List<MaterialiViewModel> images = GetImages();
-            return View();           
-        }
-        
-        [HttpPost]
-        public IActionResult FileView(int imageId)
-        {
-            List<MaterialiViewModel> images = GetImages();
-            MaterialiViewModel image = images.Find(p => p.ID == imageId);
-            if (image != null)
+            DataTable tabbola = _query.OttieniCorsi();
+            List<MaterialiViewModel> list = new List<MaterialiViewModel>();
+            //per ogni riga del datatable...
+            foreach(DataRow riga in tabbola.Rows)
             {
-                image.IsSelected = true;
-                ViewBag.Base64String = "data:image/png;base64," + Convert.ToBase64String(image.Materiale, 0, image.Materiale.Length);
+                //converte in oggetto Corsi un record di tabella
+                MaterialiViewModel vista = MaterialiViewModel.FromDataRow(riga);
+                list.Add(vista);
             }
-            return View(images);
+            return Json(list);      
         }
 
         private List<MaterialiViewModel> GetImages()
