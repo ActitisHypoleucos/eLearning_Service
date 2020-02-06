@@ -36,7 +36,7 @@ namespace eLearningService.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         
-        public JsonResult Index()
+        public JsonResult ALLCORSI()
         {
             DataTable tabbola = _query.OttieniCorsi();
             List<CorsoViewModel> list = new List<CorsoViewModel>();
@@ -50,7 +50,7 @@ namespace eLearningService.Controllers
             return Json(list);
         }
 
-        public JsonResult FileView()
+        public JsonResult list_PNG()
         {
             DataTable tabbola = _query.OttieniPNG();
             List<MaterialiViewModel> list = new List<MaterialiViewModel>();
@@ -65,13 +65,25 @@ namespace eLearningService.Controllers
             return Json(list);      
         }
 
-        public JsonResult ADMIN_Dashboard_CorsiViewModel()
+        public JsonResult ADMIN_Dashboard_Corsi()
         {
-            DataTable tabbola = _query.OttieniDashboardADMIN();
+            DataTable tabbola = _query.OttieniADMINDashboard_Corsi();
             List<ADMIN_Dashboard_CorsiViewModel> list = new List<ADMIN_Dashboard_CorsiViewModel>();
             foreach (DataRow riga in tabbola.Rows)
             {
                 ADMIN_Dashboard_CorsiViewModel item = new ADMIN_Dashboard_CorsiViewModel(riga);
+                list.Add(item);
+            }
+             return Json(list);
+        }
+
+        public JsonResult ADMIN_Dashboard_Corsisti()
+        {
+            DataTable tabbola = _query.OttieniADMINDashboard_Corsi();
+            List<ADMIN_Dashboard_CorsistiViewModel> list = new List<ADMIN_Dashboard_CorsistiViewModel>();
+            foreach (DataRow riga in tabbola.Rows)
+            {
+                ADMIN_Dashboard_CorsistiViewModel item = new ADMIN_Dashboard_CorsistiViewModel(riga);
                 list.Add(item);
             }
              return Json(list);

@@ -29,21 +29,21 @@ namespace eLearningService.Models.ViewModels
         public int? AssenzeLimite { get; set; }
         */
 
-        public string NomeCorso { get; set; }
-        public double Costo { get; set; }
-        public int TotaleOre { get; set; }
-        public DateTime DataInizio { get; set; }
-        public DateTime DataFine { get; set; }
-        public int AssenzeLimite { get; set; }
+        public string nomeCorso { get; set; }
+        public double costo { get; set; }
+        public int totaleOre { get; set; }
+        public DateTime dataInizio { get; set; }
+        public DateTime dataFine { get; set; }
+        public int assenzeLimite { get; set; }
         public CorsoViewModel(DataRow itemRow)
         {
             ID = Convert.ToInt32(CheckDBNULL(itemRow["Id_Corso_PK"]));
-            NomeCorso = Convert.ToString(CheckDBNULL(itemRow["Nome_Corso"]));
-            Costo = Convert.ToDouble(CheckDBNULL(itemRow["Costo"]));
-            TotaleOre = Convert.ToInt32(CheckDBNULL(itemRow["Totale_Ore"]));
-            DataInizio = Convert.ToDateTime(CheckDBNULL(itemRow["Data_Inizio"]));
-            DataFine = Convert.ToDateTime(CheckDBNULL(itemRow["Data_Fine"]));           
-            AssenzeLimite = Convert.ToInt32(CheckDBNULL(itemRow["Assenze_Limite"]));
+            nomeCorso = Convert.ToString(CheckDBNULL(itemRow["Nome_Corso"]));
+            costo = Convert.ToDouble(CheckDBNULL(itemRow["Costo"]));
+            totaleOre = Convert.ToInt32(CheckDBNULL(itemRow["Totale_Ore"]));
+            dataInizio = Convert.ToDateTime(CheckDBNULL(itemRow["Data_Inizio"]));
+            dataFine = Convert.ToDateTime(CheckDBNULL(itemRow["Data_Fine"]));           
+            assenzeLimite = Convert.ToInt32(CheckDBNULL(itemRow["Assenze_Limite"]));
         }
     }
 }
