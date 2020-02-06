@@ -88,5 +88,17 @@ namespace eLearningService.Controllers
             }
              return Json(list);
         }
+
+        public JsonResult ADMIN_Dashboard_Docenti()
+        {
+            DataTable tabbola = _query.OttieniADMINDashboard_Docenti();
+            List<ADMIN_Dashboard_DocentiViewModel> list = new List<ADMIN_Dashboard_DocentiViewModel>();
+            foreach (DataRow riga in tabbola.Rows)
+            {
+                ADMIN_Dashboard_DocentiViewModel item = new ADMIN_Dashboard_DocentiViewModel(riga);
+                list.Add(item);
+            }
+             return Json(list);
+        }
     }
 }
