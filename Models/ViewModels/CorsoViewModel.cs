@@ -5,7 +5,7 @@ using System.Data;
 
 namespace eLearningService.Models.ViewModels
 {
-    public class CorsoViewModel
+    public class CorsoViewModel : ViewModelBase
     {
         /*
         [Key]
@@ -28,7 +28,7 @@ namespace eLearningService.Models.ViewModels
         [Column("Assenze_Limite")]
         public int? AssenzeLimite { get; set; }
         */
-        public int ID { get; set; }
+
         public string NomeCorso { get; set; }
         public double Costo { get; set; }
         public int TotaleOre { get; set; }
@@ -44,18 +44,6 @@ namespace eLearningService.Models.ViewModels
             DataInizio = Convert.ToDateTime(CheckDBNULL(itemRow["Data_Inizio"]));
             DataFine = Convert.ToDateTime(CheckDBNULL(itemRow["Data_Fine"]));           
             AssenzeLimite = Convert.ToInt32(CheckDBNULL(itemRow["Assenze_Limite"]));
-        }
-
-        public Object CheckDBNULL(object campo)
-        {
-                if (campo == DBNull.Value)
-                {
-                     return null;
-                }
-                else
-                {
-                    return campo;
-                }
         }
     }
 }

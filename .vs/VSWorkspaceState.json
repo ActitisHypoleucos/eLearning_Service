@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Models",
-    "\\Models\\ViewModels"
+    "\\Models\\ViewModels",
+    "\\Views",
+    "\\Views\\Home"
   ],
-  "SelectedNode": "\\Models\\ViewModels\\CorsoViewModel.cs",
+  "SelectedNode": "\\Views\\Home\\Privacy.cshtml",
   "PreviewInSolutionExplorer": false
 }

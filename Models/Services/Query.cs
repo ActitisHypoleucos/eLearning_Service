@@ -15,7 +15,7 @@ namespace eLearningService.Models.Services
         DataTable IQuery.OttieniPNG()
         {
             CLS_DB dibbi = new CLS_DB();
-            DataTable tabbola = dibbi.MySelect("Select * from Materiali_Didattici WHERE Tipo = 'PNG'");
+            DataTable tabbola = dibbi.MySelect("Select * from Materiali_Didattici WHERE Tipo = '.png'");
             return tabbola;
         }
 

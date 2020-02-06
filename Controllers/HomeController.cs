@@ -50,8 +50,6 @@ namespace eLearningService.Controllers
             return Json(list);
         }
 
-        
-        
         public JsonResult FileView()
         {
             DataTable tabbola = _query.OttieniPNG();
@@ -60,13 +58,14 @@ namespace eLearningService.Controllers
             foreach(DataRow riga in tabbola.Rows)
             {
                 //converte in oggetto Corsi un record di tabella
-                MaterialiViewModel item = MaterialiViewModel.FromDataRow(riga);
+                
+                MaterialiViewModel item = new MaterialiViewModel(riga);
                 list.Add(item);
             }
             return Json(list);      
         }
 
-        private JsonResult ADMIN_Dashboard_Corsi()
+        public JsonResult ADMIN_Dashboard_CorsiViewModel()
         {
             DataTable tabbola = _query.OttieniDashboardADMIN();
             List<ADMIN_Dashboard_CorsiViewModel> list = new List<ADMIN_Dashboard_CorsiViewModel>();

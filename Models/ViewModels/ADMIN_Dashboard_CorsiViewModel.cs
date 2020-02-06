@@ -14,8 +14,8 @@ namespace eLearningService.Models.ViewModels
         {
             stato = Convert.ToString(itemRow["Stato"]);
             nome = Convert.ToString(itemRow["Nome"]);
-            durata = Convert.ToInt32(itemRow["Durata"]);
-            limite_Assenze = Convert.ToInt32(itemRow["Limite_Assenze"]);
+            durata = Convert.ToInt32(itemRow["Durata (H)"]);
+            limite_Assenze = Convert.ToInt32(itemRow["Limite Assenze"]);
             docente = Convert.ToString(itemRow["Docente"]);
         }
     }
