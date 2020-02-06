@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Models"
+    "\\Models",
+    "\\Models\\ViewModels"
   ],
-  "SelectedNode": "\\Models\\CLS_DB.cs",
+  "SelectedNode": "\\Models\\ViewModels\\CorsoViewModel.cs",
   "PreviewInSolutionExplorer": false
 }

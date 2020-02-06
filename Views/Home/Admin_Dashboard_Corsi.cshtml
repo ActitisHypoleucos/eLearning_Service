@@ -1,10 +1,10 @@
 @using eLearningService.Models.ViewModels
-@model List<ADMIN_Dashboard_Corsi>
+@model List<ADMIN_Dashboard_CorsiViewModel>
 @{
     ViewData["Title"] = "Home Page";
 }
 
-@foreach (ADMIN_Dashboard_Corsi item in Model)
+@foreach (ADMIN_Dashboard_CorsiViewModel item in Model)
 {
     <p>@item.nome</p>
 }

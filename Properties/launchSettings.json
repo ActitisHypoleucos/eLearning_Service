@@ -18,7 +18,7 @@
     "eLearning_Trying_Database": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://192.168.1.144:5001;http://192.168.1.144:5000",
+      "applicationUrl": "http://192.168.1.144:5001;http://192.168.1.144:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

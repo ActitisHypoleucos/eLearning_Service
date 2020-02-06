@@ -69,10 +69,10 @@ namespace eLearningService.Controllers
         private JsonResult ADMIN_Dashboard_Corsi()
         {
             DataTable tabbola = _query.OttieniDashboardADMIN();
-            List<ADMIN_Dashboard_Corsi> list = new List<ADMIN_Dashboard_Corsi>();
+            List<ADMIN_Dashboard_CorsiViewModel> list = new List<ADMIN_Dashboard_CorsiViewModel>();
             foreach (DataRow riga in tabbola.Rows)
             {
-                ADMIN_Dashboard_Corsi item = new ADMIN_Dashboard_Corsi(riga);
+                ADMIN_Dashboard_CorsiViewModel item = new ADMIN_Dashboard_CorsiViewModel(riga);
                 list.Add(item);
             }
              return Json(list);
