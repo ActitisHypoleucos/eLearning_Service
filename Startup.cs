@@ -67,7 +67,7 @@ namespace eLearningService
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=ADMIN_Dashboard_Corsisti}/{id?}");
             });
         }
     }

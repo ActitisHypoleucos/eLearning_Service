@@ -36,7 +36,7 @@ namespace eLearningService.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         
-        public JsonResult ALLCORSI()
+        public JsonResult IndexCorsi()
         {
             DataTable tabbola = _query.OttieniCorsi();
             List<CorsoViewModel> list = new List<CorsoViewModel>();
@@ -79,7 +79,7 @@ namespace eLearningService.Controllers
 
         public JsonResult ADMIN_Dashboard_Corsisti()
         {
-            DataTable tabbola = _query.OttieniADMINDashboard_Corsi();
+            DataTable tabbola = _query.OttieniADMINDashboard_Corsisti();
             List<ADMIN_Dashboard_CorsistiViewModel> list = new List<ADMIN_Dashboard_CorsistiViewModel>();
             foreach (DataRow riga in tabbola.Rows)
             {

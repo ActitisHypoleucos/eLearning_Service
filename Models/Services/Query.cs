@@ -8,23 +8,31 @@ namespace eLearningService.Models.Services
         DataTable IQuery.OttieniCorsi()
         {
             CLS_DB dibbi = new CLS_DB();
-            DataTable tabbola = dibbi.MySelect("Select * from Corsi");
+            DataTable tabbola = dibbi.MySelect("SELECT * FROM Corsi");
             return tabbola;
         }
 
         DataTable IQuery.OttieniPNG()
         {
             CLS_DB dibbi = new CLS_DB();
-            DataTable tabbola = dibbi.MySelect("Select * from Materiali_Didattici WHERE Tipo = '.png'");
+            DataTable tabbola = dibbi.MySelect("SELECT * FROM Materiali_Didattici WHERE Tipo = '.png'");
             return tabbola;
         }
 
-        DataTable IQuery.OttieniDashboardADMIN()
+        DataTable IQuery.OttieniADMINDashboard_Corsi()
         {
             CLS_DB dibbi = new CLS_DB();
-            DataTable tabbola = dibbi.MySelect("Select * from ADMIN_Dashboard_Corsi");
+            DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Dashboard_Corsi");
             return tabbola;
         }
+        
+        DataTable IQuery.OttieniADMINDashboard_Corsisti()
+        {
+            CLS_DB dibbi = new CLS_DB();
+            DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Dashboard_Corsisti");
+            return tabbola;
+        }
+
         
         //creare le funzioni di servizio
         
