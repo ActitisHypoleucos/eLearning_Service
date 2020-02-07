@@ -1,7 +1,8 @@
 using System;
 using System.Data;
+using eLearningService.Models.ViewModels.SHARED;
 
-namespace eLearningService.Models.ViewModels
+namespace eLearningService.Models.ViewModels.ADMIN
 {
     public class ADMIN_Dashboard_CorsistiViewModel : ViewModelBase
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace eLearningService.Models.ViewModels
+namespace eLearningService.Models.ViewModels.SHARED
 {
     public class ErrorViewModel
     {

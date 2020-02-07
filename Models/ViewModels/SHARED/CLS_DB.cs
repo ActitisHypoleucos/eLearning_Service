@@ -6,7 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 
-namespace eLearningService.Models
+namespace eLearningService.Models.ViewModels.SHARED
 {
     public class CLS_DB
     {

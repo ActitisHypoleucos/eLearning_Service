@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 
-namespace eLearningService.Models.ViewModels
+namespace eLearningService.Models.ViewModels.SHARED
 {
     public class CorsoViewModel : ViewModelBase
     {

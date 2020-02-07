@@ -1,18 +1,11 @@
-﻿using System;
-using System.Web;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using eLearningService.Models.ViewModels;
+using eLearningService.Models.ViewModels.SHARED;
+using eLearningService.Models.ViewModels.ADMIN;
 using eLearningService.Models.Services;
 using System.Data;
-using System.IO;
 using Microsoft.AspNetCore.Http;
-using static System.Net.WebRequestMethods;
-using eLearningService.Models;
 
 namespace eLearningService.Controllers
 {
