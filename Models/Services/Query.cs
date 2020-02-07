@@ -54,6 +54,23 @@ namespace eLearningService.Models.Services
             return tabbola;
         }
         
+        DataTable IQuery.OttieniADMINDettagli_Docenti()
+        {
+            CLS_DB dibbi = new CLS_DB();
+            DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Dettagli_Docenti");
+            return tabbola;
+        }
+
+        #region Metodo base
+        /*
+        DataTable IQuery.nome()
+        {
+            CLS_DB dibbi = new CLS_DB();
+            DataTable tabbola = dibbi.MySelect("SELECT * FROM Tabbolanome");
+            return tabbola;
+        }
+        */
+        #endregion
         //creare le funzioni di servizio
     }
 }

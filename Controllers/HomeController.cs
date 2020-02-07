@@ -124,5 +124,17 @@ namespace eLearningService.Controllers
             }
              return Json(list);
         }
+
+        public JsonResult ADMIN_Dettagli_Docenti()
+        {
+            DataTable tabbola = _query.OttieniADMINDettagli_Docenti();
+            List<ADMIN_Dettagli_DocentiViewModel> list = new List<ADMIN_Dettagli_DocentiViewModel>();
+            foreach (DataRow riga in tabbola.Rows)
+            {
+                ADMIN_Dettagli_DocentiViewModel item = new ADMIN_Dettagli_DocentiViewModel(riga); 
+                list.Add(item);
+            }
+            return Json(list);
+        }
     }
 }
