@@ -4,7 +4,7 @@ using eLearningService.Models.ViewModels.SHARED;
 
 namespace eLearningService.Models.ViewModels.ADMIN
 {
-    public class ADMIN_Filtro_Corsisti : ViewModelBase
+    public class ADMIN_Filtro_CorsistiViewModel : ViewModelBase
     {
         public string stato { get; set; }
         public string nome { get; set; }
@@ -14,7 +14,7 @@ namespace eLearningService.Models.ViewModels.ADMIN
         public int assenze { get; set; }
         public string corso { get; set; }
 
-        public ADMIN_Filtro_Corsisti(DataRow itemRow)
+        public ADMIN_Filtro_CorsistiViewModel(DataRow itemRow)
         {
             stato = Convert.ToString(CheckDBNULL(itemRow["Stato"]));
             nome= Convert.ToString(CheckDBNULL(itemRow["Nome"]));

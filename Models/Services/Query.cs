@@ -107,6 +107,13 @@ namespace eLearningService.Models.Services
             return tabbola;
         }
 
+        DataTable IQuery.OttieniADMINLezione_ListaCorsi()
+        {
+            CLS_DB dibbi = new CLS_DB();
+            DataTable tabbola = dibbi.MySelect("EXEC View_ADMIN_Lezioni_ListaCorsi");
+            return tabbola;
+        }
+
         DataTable IQuery.OttieniADMINTest_ListaCorsisti()
         {
             CLS_DB dibbi = new CLS_DB();

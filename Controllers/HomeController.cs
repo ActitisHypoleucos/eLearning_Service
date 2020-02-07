@@ -228,10 +228,10 @@ namespace eLearningService.Controllers
         public JsonResult ADMIN_Filtro_Corsisti()
         {
             DataTable tabbola = _query.OttieniADMIN_Filtro_Corsisti();
-            List<ADMIN_Filtro_Corsisti> list = new List<ADMIN_Filtro_Corsisti>();
+            List<ADMIN_Filtro_CorsistiViewModel> list = new List<ADMIN_Filtro_CorsistiViewModel>();
             foreach (DataRow riga in tabbola.Rows)
             {
-                ADMIN_Filtro_Corsisti item = new ADMIN_Filtro_Corsisti(riga); 
+                ADMIN_Filtro_CorsistiViewModel item = new ADMIN_Filtro_CorsistiViewModel(riga); 
                 list.Add(item);
             }
             return Json(list);
@@ -240,10 +240,10 @@ namespace eLearningService.Controllers
         public JsonResult ADMIN_Filtro_Corsisti_Attivi()
         {
             DataTable tabbola = _query.OttieniADMIN_Filtro_Corsisti_Attivi();
-            List<ADMIN_Filtro_Corsisti> list = new List<ADMIN_Filtro_Corsisti>();
+            List<ADMIN_Filtro_CorsistiViewModel> list = new List<ADMIN_Filtro_CorsistiViewModel>();
             foreach (DataRow riga in tabbola.Rows)
             {
-                ADMIN_Filtro_Corsisti item = new ADMIN_Filtro_Corsisti(riga); 
+                ADMIN_Filtro_CorsistiViewModel item = new ADMIN_Filtro_CorsistiViewModel(riga); 
                 list.Add(item);
             }
             return Json(list);
@@ -252,10 +252,22 @@ namespace eLearningService.Controllers
         public JsonResult ADMIN_Filtro_Corsisti_Allontanati()
         {
             DataTable tabbola = _query.OttieniADMIN_Filtro_Corsisti_Allontanati();
-            List<ADMIN_Filtro_Corsisti> list = new List<ADMIN_Filtro_Corsisti>();
+            List<ADMIN_Filtro_CorsistiViewModel> list = new List<ADMIN_Filtro_CorsistiViewModel>();
             foreach (DataRow riga in tabbola.Rows)
             {
-                ADMIN_Filtro_Corsisti item = new ADMIN_Filtro_Corsisti(riga); 
+                ADMIN_Filtro_CorsistiViewModel item = new ADMIN_Filtro_CorsistiViewModel(riga); 
+                list.Add(item);
+            }
+            return Json(list);
+        }
+
+        public JsonResult ADMINLezione_ListaCorsi()
+        {
+            DataTable tabbola = _query.OttieniADMINLezione_ListaCorsi();
+            List<ADMIN_Lezioni_ListaCorsiViewModel> list = new List<ADMIN_Lezioni_ListaCorsiViewModel>();
+            foreach (DataRow riga in tabbola.Rows)
+            {
+                ADMIN_Lezioni_ListaCorsiViewModel item = new ADMIN_Lezioni_ListaCorsiViewModel(riga); 
                 list.Add(item);
             }
             return Json(list);

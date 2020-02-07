@@ -19,6 +19,7 @@ namespace eLearningService.Models.Services
                 DataTable OttieniADMINLezione_ListaMateriali();
                 DataTable OttieniADMINLezione_ListaModuli();
                 DataTable OttieniADMINLezione_Test();
+                DataTable OttieniADMINLezione_ListaCorsi();
                 DataTable OttieniADMINTest_ListaCorsisti();
                 DataTable OttioniADMINTest_ListaTest();
             #endregion
