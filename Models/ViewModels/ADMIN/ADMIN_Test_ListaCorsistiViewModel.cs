@@ -16,7 +16,7 @@ namespace eLearningService.Models.ViewModels.ADMIN
             stato = Convert.ToString(CheckDBNULL(itemRow["Stato"]));
             nome = Convert.ToString(CheckDBNULL(itemRow["Nome"]));
             cognome = Convert.ToString(CheckDBNULL(itemRow["Cognome"]));
-            numeroTest = Convert.ToString(CheckDBNULL(itemRow["Numero"]));
+            numeroTest = Convert.ToString(CheckDBNULL(itemRow["Numero Test"]));
         } 
     }
 }
