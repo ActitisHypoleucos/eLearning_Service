@@ -166,12 +166,24 @@ namespace eLearningService.Controllers
         }
 
         public JsonResult ADMIN_Lezioni_Test()
+        {
+            DataTable tabbola = _query.OttieniADMINLezione_Test();
+            List<ADMIN_Lezioni_TestViewModel> list = new List<ADMIN_Lezioni_TestViewModel>();
+            foreach (DataRow riga in tabbola.Rows)
+            {
+                ADMIN_Lezioni_TestViewModel item = new ADMIN_Lezioni_TestViewModel(riga); 
+                list.Add(item);
+            }
+            return Json(list);
+        }
+
+        public JsonResult ADMIN_Test_ListaCorsisti()        
                 {
-                    DataTable tabbola = _query.OttieniADMINLezione_Test();
-                    List<ADMIN_Lezioni_TestViewModel> list = new List<ADMIN_Lezioni_TestViewModel>();
+                    DataTable tabbola = _query.OttieniADMINTest_ListaCorsisti();
+                    List<ADMIN_Test_ListaCorsistiViewModel> list = new List<ADMIN_Test_ListaCorsistiViewModel>();
                     foreach (DataRow riga in tabbola.Rows)
                     {
-                        ADMIN_Lezioni_TestViewModel item = new ADMIN_Lezioni_TestViewModel(riga); 
+                        ADMIN_Test_ListaCorsistiViewModel item = new ADMIN_Test_ListaCorsistiViewModel(riga); 
                         list.Add(item);
                     }
                     return Json(list);

@@ -83,13 +83,20 @@ namespace eLearningService.Models.Services
             return tabbola;
         }
 
-        public DataTable OttieniADMINLezione_Test()
+        DataTable IQuery.OttieniADMINLezione_Test()
         {
             CLS_DB dibbi = new CLS_DB();
             DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Lezioni_Test");
             return tabbola;
         }
-        
+
+        DataTable IQuery.OttieniADMINTest_ListaCorsisti()
+        {
+            CLS_DB dibbi = new CLS_DB();
+            DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Test_ListaCorsisti");
+            return tabbola;
+        }
+
         //creare le funzioni di servizio
     }
 }
