@@ -200,5 +200,17 @@ namespace eLearningService.Controllers
             }
             return Json(list);
         }
+
+        public JsonResult name()
+                {
+                    DataTable tabbola = _query.ChiamaStoredProcedure();
+                    List<ADMIN_Filtro_Corso> list = new List<ADMIN_Filtro_Corso>();
+                    foreach (DataRow riga in tabbola.Rows)
+                    {
+                        ADMIN_Filtro_Corso item = new ADMIN_Filtro_Corso(riga); 
+                        list.Add(item);
+                    }
+                    return Json(list);
+                }
     }
 }
