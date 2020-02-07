@@ -21,18 +21,19 @@ namespace eLearningService.Models.Services
             DataTable tabbola = dibbi.MySelect("SELECT * FROM Materiali_Didattici WHERE Tipo = '.png'");
             return tabbola;
         }
-
+        /*
         DataTable IQuery.ChiamaStoredProcedure()
         {
             List<string> parametri = new List<string>();
             List<string> valori = new List<string>();
             parametri.Add("@stato1"); valori.Add ("attivo");
-            parametri.Add("@stato2"); valori.Add ("concluso");
+            parametri.Add("@stato2"); valori.Add ("");
             parametri.Add("@stato3"); valori.Add ("annullato");
             CLS_DB dibbi = new CLS_DB();
-            DataTable tabbola = dibbi.EseguiStoredProcedureTable("EXEC Filtro_ADMIN_Corso", parametri, valori);
+            DataTable tabbola = dibbi.StorePExe("SELECT","Filtro_ADMIN_Corso", parametri, valori);
             return tabbola;
         }
+        */
         #endregion
     #region ADMIN
         #region Views
@@ -121,14 +122,25 @@ namespace eLearningService.Models.Services
         }
     #endregion
         #region Stored Procedures
-    /*
-        public DataTable OttieniADMIN_Filtro_CorsiNonAssegnati()
+        public DataTable OttieniADMIN_Filtro_CorsiAssegnati()
         {
             CLS_DB dibbi = new CLS_DB();
-            DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Test_ListaTest");
+            List<string> parametri = new List<string>();
+            List<string> valori = new List<string>();
+            parametri.Add("@var"); valori.Add("profassegnato");
+            DataTable tabbola = dibbi.StorePExe("SELECT", "Filtro_ADMIN_CorsiNonAssegnati", parametri, valori);
             return tabbola;
         }
-
+        public DataTable OttieniADMIN_Filtro_CorsiNonAssegnati()
+        {
+            CLS_DB dibbi = new CLS_DB();List<string> parametri = new List<string>();
+            List<string> valori = new List<string>();
+            parametri.Add("@var"); valori.Add("");
+            DataTable tabbola = dibbi.StorePExe("SELECT", "Filtro_ADMIN_CorsiNonAssegnati", parametri, valori);
+            return tabbola;
+        }
+        
+        /*
         public DataTable OttieniADMIN_Filtro_Corsisti()
         {
             CLS_DB dibbi = new CLS_DB();

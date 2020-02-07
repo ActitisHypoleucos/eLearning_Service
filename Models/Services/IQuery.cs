@@ -6,7 +6,6 @@ namespace eLearningService.Models.Services
          #region SINGLE ELEMENT
         DataTable OttieniCorsi();
         DataTable OttieniPNG();
-        DataTable ChiamaStoredProcedure();
         #endregion
          #region ADMIN
             #region Views
@@ -24,7 +23,8 @@ namespace eLearningService.Models.Services
                 DataTable OttioniADMINTest_ListaTest();
             #endregion
             #region Stored Procedures
-                //DataTable OttieniADMIN_Filtro_CorsiNonAssegnati();
+                DataTable OttieniADMIN_Filtro_CorsiAssegnati();
+                DataTable OttieniADMIN_Filtro_CorsiNonAssegnati();
                 //DataTable OttieniADMIN_Filtro_Corsisti();
                 //DataTable OttieniADMIN_Filtro_Corso();
                 //DataTable OttieniADMINLezioni_ListaCorsi();

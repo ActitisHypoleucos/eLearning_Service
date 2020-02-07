@@ -201,13 +201,25 @@ namespace eLearningService.Controllers
             return Json(list);
         }
 
-        public JsonResult name()
+        public JsonResult ADMIN_Filtro_CorsiAssegnati()
+        {
+            DataTable tabbola = _query.OttieniADMIN_Filtro_CorsiAssegnati();
+            List<ADMIN_Filtro_CorsiAssegnatiViewModel> list = new List<ADMIN_Filtro_CorsiAssegnatiViewModel>();
+            foreach (DataRow riga in tabbola.Rows)
+            {
+                ADMIN_Filtro_CorsiAssegnatiViewModel item = new ADMIN_Filtro_CorsiAssegnatiViewModel(riga); 
+                list.Add(item);
+            }
+            return Json(list);
+        }
+
+        public JsonResult ADMIN_Filtro_CorsiNonAssegnati()
                 {
-                    DataTable tabbola = _query.ChiamaStoredProcedure();
-                    List<ADMIN_Filtro_Corso> list = new List<ADMIN_Filtro_Corso>();
+                    DataTable tabbola = _query.OttieniADMIN_Filtro_CorsiNonAssegnati();
+                    List<ADMIN_Filtro_CorsiAssegnatiViewModel> list = new List<ADMIN_Filtro_CorsiAssegnatiViewModel>();
                     foreach (DataRow riga in tabbola.Rows)
                     {
-                        ADMIN_Filtro_Corso item = new ADMIN_Filtro_Corso(riga); 
+                        ADMIN_Filtro_CorsiAssegnatiViewModel item = new ADMIN_Filtro_CorsiAssegnatiViewModel(riga); 
                         list.Add(item);
                     }
                     return Json(list);

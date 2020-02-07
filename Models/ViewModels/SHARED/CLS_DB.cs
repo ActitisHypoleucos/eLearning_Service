@@ -135,50 +135,71 @@ namespace eLearningService.Models.ViewModels.SHARED
     #endregion
 
     #region STORED PROCEDURE(query,List<string>Parametri)
-
-        public void EseguiStoredProcedure(string StringaComandoSQL, List<string> ParametroStoredProcedure,
-            List<string> ValoreParametro)
+    public DataTable StorePExe(string TipoSP, string nome_sp, List<string> Lista_Nome_Campi, List<string> Lista_Valore_Campi)
         {
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = StringaDiConnessione;
+            SqlConnection connessione = new SqlConnection();
+            connessione.ConnectionString = StringaDiConnessione;
+
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Clear();
-            cmd.CommandText = StringaComandoSQL;
-            try
-            {
-                for (int i = 0; i != ParametroStoredProcedure.Count; i++)
-                    cmd.Parameters.AddWithValue(ParametroStoredProcedure[i], ValoreParametro[i]);
-            }
-            catch (Exception err)
-            {
-                throw new Exception("ATTENZIONE!!\n" + err.Message);
-            }
-            finally
-            {
-                ParametroStoredProcedure.Clear();
-                ValoreParametro.Clear();
-            }
-            cmd.Connection = conn;
-            SqlDataReader Reader;
-            DataTable Table = new DataTable();
-            try
-            {
-                conn.Open();
-                Reader = cmd.ExecuteReader();
-                cmd.ExecuteNonQuery();
-                Table.Load(Reader);
-            }
-            catch (Exception err)
-            {
-                throw new Exception("l'errore :   " + err.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
 
+            DataTable Tabella = new DataTable();
+
+            cmd.Parameters.Clear();
+            cmd.CommandText = nome_sp;
+
+            try
+            {
+                for (int i = 0; i != Lista_Nome_Campi.Count; i++)
+                {
+                    cmd.Parameters.AddWithValue(Lista_Nome_Campi[i], Lista_Valore_Campi[i]);
+                }
+            }
+            catch (Exception error)
+            {
+                throw new Exception("Attenzione" + error.Message);
+            }
+            finally
+            {
+                Lista_Nome_Campi.Clear();
+                Lista_Valore_Campi.Clear();
+            }
+            cmd.Connection = connessione;
+            connessione.Open();
+
+            switch (TipoSP)
+            { 
+                case "SELECT":
+                    SqlDataReader LETTORE;
+                   
+                    try
+                    {
+                        LETTORE = cmd.ExecuteReader();
+                        Tabella.Load(LETTORE);
+                    }
+                    catch (Exception error)
+                    { throw new Exception("Attenzione" + error.Message); }
+
+                    finally
+                    { connessione.Close(); }
+
+                    break;
+
+                case "INSERT":
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    catch (Exception error)
+                    { throw new Exception("Attenzione" + error.Message); }
+
+                    finally
+                    { connessione.Close(); }
+                    break;
+            }
+            return Tabella;
+        }
     #endregion
 
     #region SELECT STORE PROCEDURE
@@ -252,6 +273,7 @@ namespace eLearningService.Models.ViewModels.SHARED
                 cmd.ExecuteNonQuery();
                 Table.Load(Reader);
             }
+            
             catch (Exception err)
             {
                 throw new Exception("l'errore :   " + err.Message);
