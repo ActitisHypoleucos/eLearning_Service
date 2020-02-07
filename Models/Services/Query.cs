@@ -39,7 +39,16 @@ namespace eLearningService.Models.Services
             DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Dashboard_Docenti");
             return tabbola;
         }
-        //creare le funzioni di servizio
+
+        DataTable IQuery.OttieniADMINDettagli_Corsi()
+        {
+            CLS_DB dibbi = new CLS_DB();
+            DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Dettagli_Corsi");
+            return tabbola;
+        }
+
+        //DataTable IQuery.
         
+        //creare le funzioni di servizio
     }
 }
