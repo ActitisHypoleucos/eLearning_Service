@@ -9,8 +9,7 @@ namespace eLearningService.Models.Services
          DataTable OttieniADMINDashboard_Corsisti();
          DataTable OttieniADMINDashboard_Docenti();
          DataTable OttieniADMINDettagli_Corsi();
-
-         //DataTable OttieniADMINDettagli_Corsisti();
+         DataTable OttieniADMINDettagli_Corsisti();
 
          //DataTable OttieniADMINDettagli_Docenti();
 

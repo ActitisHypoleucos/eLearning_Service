@@ -112,5 +112,17 @@ namespace eLearningService.Controllers
             }
              return Json(list);
         }
+
+        public JsonResult ADMIN_Dettagli_Corsisti()
+        {
+            DataTable tabbola = _query.OttieniADMINDettagli_Corsisti();
+            List<ADMIN_Dettagli_CorsistiViewModel> list = new List<ADMIN_Dettagli_CorsistiViewModel>();
+            foreach (DataRow riga in tabbola.Rows)
+            {
+                ADMIN_Dettagli_CorsistiViewModel item = new ADMIN_Dettagli_CorsistiViewModel(riga);
+                list.Add(item);
+            }
+             return Json(list);
+        }
     }
 }
