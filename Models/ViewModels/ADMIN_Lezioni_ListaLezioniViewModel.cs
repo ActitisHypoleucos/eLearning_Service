@@ -1,6 +1,5 @@
 using System;
 using System.Data;
-using eLearningService.Models.ViewModels;
 
 namespace eLearningService.Models.ViewModels
 {
