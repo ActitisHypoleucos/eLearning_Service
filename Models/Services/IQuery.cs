@@ -16,6 +16,6 @@ namespace eLearningService.Models.Services
          DataTable OttieniADMINLezione_ListaModuli();
          DataTable OttieniADMINLezione_Test();
          DataTable OttieniADMINTest_ListaCorsisti();
-         //DataTable OttioniADMINTest_ListaTest();
+         DataTable OttioniADMINTest_ListaTest();
     }
 }
