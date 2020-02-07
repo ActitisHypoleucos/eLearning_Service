@@ -28,7 +28,7 @@ namespace eLearningService.Models.ViewModels
         [Column("Assenze_Limite")]
         public int? AssenzeLimite { get; set; }
         */
-
+        public int id { get; set; }
         public string nomeCorso { get; set; }
         public double costo { get; set; }
         public int totaleOre { get; set; }
@@ -37,7 +37,7 @@ namespace eLearningService.Models.ViewModels
         public int assenzeLimite { get; set; }
         public CorsoViewModel(DataRow itemRow)
         {
-            ID = Convert.ToInt32(CheckDBNULL(itemRow["Id_Corso_PK"]));
+            id = Convert.ToInt32(CheckDBNULL(itemRow["Id_Corso_PK"]));
             nomeCorso = Convert.ToString(CheckDBNULL(itemRow["Nome_Corso"]));
             costo = Convert.ToDouble(CheckDBNULL(itemRow["Costo"]));
             totaleOre = Convert.ToInt32(CheckDBNULL(itemRow["Totale_Ore"]));

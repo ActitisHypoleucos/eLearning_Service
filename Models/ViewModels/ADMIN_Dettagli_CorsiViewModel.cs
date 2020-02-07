@@ -2,7 +2,7 @@ using System;
 using System.Data;
 namespace eLearningService.Models.ViewModels
 {
-    public class ADMIN_Dettagli_CorsiViewModel
+    public class ADMIN_Dettagli_CorsiViewModel : ViewModelBase
     {
         public string nomecorso { get; set; }
         public int durata { get; set; }
@@ -28,19 +28,5 @@ namespace eLearningService.Models.ViewModels
             programma = CheckDBNULL(itemRow["Programma"]);
             docente = Convert.ToString(CheckDBNULL(itemRow["Docente"]));
         }
-
-        #region CheckFor DBNULL
-        public object CheckDBNULL(object campo)
-        {
-                if (campo == DBNull.Value)
-                {
-                     return null;
-                }
-                else
-                {
-                    return campo;
-                }
-        }
-        #endregion
     }
 }

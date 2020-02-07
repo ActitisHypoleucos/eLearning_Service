@@ -3,7 +3,7 @@ using System.Data;
 
 namespace eLearningService.Models.ViewModels
 {
-    public class ADMIN_Dashboard_CorsistiViewModel
+    public class ADMIN_Dashboard_CorsistiViewModel : ViewModelBase
     {
         public string stato { get; set; }
         public string nome { get; set; }
@@ -15,13 +15,13 @@ namespace eLearningService.Models.ViewModels
 
         public ADMIN_Dashboard_CorsistiViewModel(DataRow itemRow)
         {
-            stato = Convert.ToString(itemRow["Stato"]);
-            nome = Convert.ToString(itemRow["Nome"]);
-            cognome = Convert.ToString(itemRow["Cognome"]);
-            email = Convert.ToString(itemRow["Email"]);
-            superato = Convert.ToString(itemRow["Superato?"]);
-            assenze = Convert.ToInt32(itemRow["Assenze"]);
-            nomeCorso = Convert.ToString(itemRow["Corso"]);
+            stato = Convert.ToString(CheckDBNULL(itemRow["Stato"]));
+            nome = Convert.ToString(CheckDBNULL(itemRow["Nome"]));
+            cognome = Convert.ToString(CheckDBNULL(itemRow["Cognome"]));
+            email = Convert.ToString(CheckDBNULL(itemRow["Email"]));
+            superato = Convert.ToString(CheckDBNULL(itemRow["Superato?"]));
+            assenze = Convert.ToInt32(CheckDBNULL(itemRow["Assenze"]));
+            nomeCorso = Convert.ToString(CheckDBNULL(itemRow["Corso"]));
         }
     }
 }

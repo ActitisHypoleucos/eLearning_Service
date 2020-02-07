@@ -3,7 +3,7 @@ using System.Data;
 
 namespace eLearningService.Models.ViewModels
 {
-    public class ADMIN_Dashboard_CorsiViewModel
+    public class ADMIN_Dashboard_CorsiViewModel : ViewModelBase
     {
         public string stato { get; set; } 
         public string nome { get; set;}
@@ -12,11 +12,11 @@ namespace eLearningService.Models.ViewModels
         public string docente { get; set;}
         public ADMIN_Dashboard_CorsiViewModel(DataRow itemRow)
         {
-            stato = Convert.ToString(itemRow["Stato"]);
-            nome = Convert.ToString(itemRow["Nome"]);
-            durata = Convert.ToInt32(itemRow["Durata (H)"]);
-            limite_Assenze = Convert.ToInt32(itemRow["Limite Assenze"]);
-            docente = Convert.ToString(itemRow["Docente"]);
+            stato = Convert.ToString(CheckDBNULL(itemRow["Stato"]));
+            nome = Convert.ToString(CheckDBNULL(itemRow["Nome"]));
+            durata = Convert.ToInt32(CheckDBNULL(itemRow["Durata (H)"]));
+            limite_Assenze = Convert.ToInt32(CheckDBNULL(itemRow["Limite Assenze"]));
+            docente = Convert.ToString(CheckDBNULL(itemRow["Docente"]));
         }
     }
 }
