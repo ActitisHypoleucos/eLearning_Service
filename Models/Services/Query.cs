@@ -83,21 +83,13 @@ namespace eLearningService.Models.Services
             return tabbola;
         }
 
-
-
-
-
-
-        #region Metodo base
-        /*
-        DataTable IQuery.nome()
+        public DataTable OttieniADMINLezione_Test()
         {
             CLS_DB dibbi = new CLS_DB();
-            DataTable tabbola = dibbi.MySelect("SELECT * FROM Tabbolanome");
+            DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Lezioni_Test");
             return tabbola;
         }
-        */
-        #endregion
+        
         //creare le funzioni di servizio
     }
 }
