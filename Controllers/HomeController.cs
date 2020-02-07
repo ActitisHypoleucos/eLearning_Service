@@ -153,5 +153,18 @@ namespace eLearningService.Controllers
             }
             return Json(list);
         }
+        public JsonResult ADMIN_Lezioni_ListaModuli()
+        {
+            DataTable tabbola = _query.OttieniADMINLezione_ListaModuli();
+            List<ADMIN_Lezioni_ListaModuliViewModel> list = new List<ADMIN_Lezioni_ListaModuliViewModel>();
+            foreach (DataRow riga in tabbola.Rows)
+            {
+                ADMIN_Lezioni_ListaModuliViewModel item = new ADMIN_Lezioni_ListaModuliViewModel(riga); 
+                list.Add(item);
+            }
+            return Json(list);
+        }
+    
+        
     }
 }
