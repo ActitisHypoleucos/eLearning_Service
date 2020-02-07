@@ -13,7 +13,7 @@ namespace eLearningService.Models.ViewModels.ADMIN
         public ADMIN_Lezioni_TestViewModel(DataRow itemRow)
         {
             nome = Convert.ToString(CheckDBNULL(itemRow["Nome"]));
-            tempoStimato = Convert.ToInt32(CheckDBNULL(itemRow["Tempo Stimato"]));
+            tempoStimato = Convert.ToInt32(CheckDBNULL(itemRow["Tempo Stimato (MIN)"]));
             percentualeSuperamento = Convert.ToDecimal(CheckDBNULL(itemRow["% Superamento"]));
         }
     }
