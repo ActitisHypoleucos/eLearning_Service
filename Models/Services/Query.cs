@@ -1,5 +1,4 @@
 using System.Data;
-using eLearningService.Models;
 
 namespace eLearningService.Models.Services
 {
@@ -68,6 +67,18 @@ namespace eLearningService.Models.Services
             return tabbola;
         }
 
+        DataTable IQuery.OttieniADMINLezione_ListaMateriali()
+        {
+            CLS_DB dibbi = new CLS_DB();
+            DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Lezioni_ListaMateriali");
+            return tabbola;
+        }
+        
+        
+        
+        
+        
+        
         #region Metodo base
         /*
         DataTable IQuery.nome()
