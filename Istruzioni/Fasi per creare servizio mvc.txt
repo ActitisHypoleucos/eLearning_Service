@@ -7,3 +7,8 @@ In una classe servizio:
 -crei la relativa interfaccia
 
 dependency injenection nella startup
+
+-todo:
+    +aggiungere un controller per admin
+    +aggiungere un controller per discente
+    +aggiungere un controller per docente

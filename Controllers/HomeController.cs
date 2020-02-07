@@ -214,15 +214,51 @@ namespace eLearningService.Controllers
         }
 
         public JsonResult ADMIN_Filtro_CorsiNonAssegnati()
-                {
-                    DataTable tabbola = _query.OttieniADMIN_Filtro_CorsiNonAssegnati();
-                    List<ADMIN_Filtro_CorsiAssegnatiViewModel> list = new List<ADMIN_Filtro_CorsiAssegnatiViewModel>();
-                    foreach (DataRow riga in tabbola.Rows)
-                    {
-                        ADMIN_Filtro_CorsiAssegnatiViewModel item = new ADMIN_Filtro_CorsiAssegnatiViewModel(riga); 
-                        list.Add(item);
-                    }
-                    return Json(list);
-                }
+        {
+            DataTable tabbola = _query.OttieniADMIN_Filtro_CorsiNonAssegnati();
+            List<ADMIN_Filtro_CorsiAssegnatiViewModel> list = new List<ADMIN_Filtro_CorsiAssegnatiViewModel>();
+            foreach (DataRow riga in tabbola.Rows)
+            {
+                ADMIN_Filtro_CorsiAssegnatiViewModel item = new ADMIN_Filtro_CorsiAssegnatiViewModel(riga); 
+                list.Add(item);
+            }
+            return Json(list);
+        }
+
+        public JsonResult ADMIN_Filtro_Corsisti()
+        {
+            DataTable tabbola = _query.OttieniADMIN_Filtro_Corsisti();
+            List<ADMIN_Filtro_Corsisti> list = new List<ADMIN_Filtro_Corsisti>();
+            foreach (DataRow riga in tabbola.Rows)
+            {
+                ADMIN_Filtro_Corsisti item = new ADMIN_Filtro_Corsisti(riga); 
+                list.Add(item);
+            }
+            return Json(list);
+        }
+
+        public JsonResult ADMIN_Filtro_Corsisti_Attivi()
+        {
+            DataTable tabbola = _query.OttieniADMIN_Filtro_Corsisti_Attivi();
+            List<ADMIN_Filtro_Corsisti> list = new List<ADMIN_Filtro_Corsisti>();
+            foreach (DataRow riga in tabbola.Rows)
+            {
+                ADMIN_Filtro_Corsisti item = new ADMIN_Filtro_Corsisti(riga); 
+                list.Add(item);
+            }
+            return Json(list);
+        }
+
+        public JsonResult ADMIN_Filtro_Corsisti_Allontanati()
+        {
+            DataTable tabbola = _query.OttieniADMIN_Filtro_Corsisti_Allontanati();
+            List<ADMIN_Filtro_Corsisti> list = new List<ADMIN_Filtro_Corsisti>();
+            foreach (DataRow riga in tabbola.Rows)
+            {
+                ADMIN_Filtro_Corsisti item = new ADMIN_Filtro_Corsisti(riga); 
+                list.Add(item);
+            }
+            return Json(list);
+        }
     }
 }

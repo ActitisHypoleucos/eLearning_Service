@@ -25,7 +25,9 @@ namespace eLearningService.Models.Services
             #region Stored Procedures
                 DataTable OttieniADMIN_Filtro_CorsiAssegnati();
                 DataTable OttieniADMIN_Filtro_CorsiNonAssegnati();
-                //DataTable OttieniADMIN_Filtro_Corsisti();
+                DataTable OttieniADMIN_Filtro_Corsisti_Attivi();
+                DataTable OttieniADMIN_Filtro_Corsisti_Allontanati();
+                DataTable OttieniADMIN_Filtro_Corsisti();
                 //DataTable OttieniADMIN_Filtro_Corso();
                 //DataTable OttieniADMINLezioni_ListaCorsi();
             #endregion
