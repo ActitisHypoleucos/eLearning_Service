@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using eLearningService.Models.ViewModels.SHARED;
 
@@ -6,6 +7,7 @@ namespace eLearningService.Models.Services
 {
     public class Query : IQuery
     {
+    #region Single Element
         DataTable IQuery.OttieniCorsi()
         {
             CLS_DB dibbi = new CLS_DB();
@@ -20,6 +22,20 @@ namespace eLearningService.Models.Services
             return tabbola;
         }
 
+        DataTable IQuery.ChiamaStoredProcedure()
+        {
+            List<string> parametri = new List<string>();
+            List<string> valori = new List<string>();
+            parametri.Add("@stato1"); valori.Add ("attivo");
+            parametri.Add("@stato2"); valori.Add ("concluso");
+            parametri.Add("@stato3"); valori.Add ("annullato");
+            CLS_DB dibbi = new CLS_DB();
+            DataTable tabbola = dibbi.EseguiStoredProcedureTable("EXEC Filtro_ADMIN_Corso", parametri, valori);
+            return tabbola;
+        }
+        #endregion
+    #region ADMIN
+        #region Views
         DataTable IQuery.OttieniADMINDashboard_Corsi()
         {
             CLS_DB dibbi = new CLS_DB();
@@ -103,7 +119,39 @@ namespace eLearningService.Models.Services
             DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Test_ListaTest");
             return tabbola;
         }
+    #endregion
+        #region Stored Procedures
+    /*
+        public DataTable OttieniADMIN_Filtro_CorsiNonAssegnati()
+        {
+            CLS_DB dibbi = new CLS_DB();
+            DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Test_ListaTest");
+            return tabbola;
+        }
 
+        public DataTable OttieniADMIN_Filtro_Corsisti()
+        {
+            CLS_DB dibbi = new CLS_DB();
+            DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Test_ListaTest");
+            return tabbola;
+        }
+
+        public DataTable OttieniADMIN_Filtro_Corso()
+        {
+            CLS_DB dibbi = new CLS_DB();
+            DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Test_ListaTest");
+            return tabbola;
+        }
+
+        public DataTable OttieniADMINLezioni_ListaCorsi()
+        {
+            CLS_DB dibbi = new CLS_DB();
+            DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Test_ListaTest");
+            return tabbola;
+        }
+        */
+    #endregion
+    #endregion
         //creare le funzioni di servizio
     }
 }

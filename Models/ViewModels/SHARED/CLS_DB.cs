@@ -218,89 +218,135 @@ namespace eLearningService.Models.ViewModels.SHARED
         
     #endregion
 
-#region FILES - DB
-
-    #region FILE TO BINARY
-
-        public bool databaseFilePut(string varFilePath, string nome)
+    #region Select Store procedure => query, parameters, value
+    public DataTable EseguiStoredProcedureTable(string StringaComandoSQL, List<string> ParametroStoredProcedure,
+            List<string> ValoreParametro)
         {
-            bool esito = false;
-
-            //dichiara un array di byte
-            byte[] file;
-
-            //istanzia il "convertitore"
-            using (var stream = new FileStream(varFilePath, FileMode.Open, FileAccess.Read))
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = StringaDiConnessione;
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Clear();
+            cmd.CommandText = StringaComandoSQL;
+            try
             {
-                using (var reader = new BinaryReader(stream))
-                {
-                    //legge il file, e lo converte
-                    file = reader.ReadBytes((int)stream.Length);
-                }
-
-                //invia il file al DB
-                using (SqlConnection connection = new SqlConnection(StringaDiConnessione))
-                {
-                    using (var sqlWrite = new SqlCommand("INSERT INTO Materiali_Didattici (Materiale, Tipo) Values(@File,@Tipo)", connection))
-                    {
-                        connection.Open();
-                        sqlWrite.Parameters.Add("@File", SqlDbType.VarBinary, file.Length).Value = file;
-                        sqlWrite.Parameters.Add("@Tipo", SqlDbType.VarChar, nome.Length).Value = nome;
-                        esito = sqlWrite.ExecuteNonQuery() > 0;
-                        connection.Close();
-                        return esito;
-                    }
-                }
-
+                for (int i = 0; i != ParametroStoredProcedure.Count; i++)
+                    cmd.Parameters.AddWithValue(ParametroStoredProcedure[i], ValoreParametro[i]);
             }
-        }
-
+            catch (Exception err)
+            {
+                throw new Exception("ATTENZIONE!!\n" + err.Message);
+            }
+            finally
+            {
+                ParametroStoredProcedure.Clear();
+                ValoreParametro.Clear();
+            }
+            cmd.Connection = conn;
+            SqlDataReader Reader;
+            DataTable Table = new DataTable();
+            try
+            {
+                conn.Open();
+                Reader = cmd.ExecuteReader();
+                cmd.ExecuteNonQuery();
+                Table.Load(Reader);
+            }
+            catch (Exception err)
+            {
+                throw new Exception("l'errore :   " + err.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return Table;
+        }    
     #endregion
 
-    #region BINARY TO FILE
-    
-        public bool databaseFileRead(string Nome, string varPathToNewLocation)
-        {
-            
-            bool esito = false;
+    #region FILES - DB
 
-            using (SqlConnection connection = new SqlConnection(StringaDiConnessione))
-            using (var sqlQuery = new SqlCommand(@"SELECT Materiale FROM [Materiali_Didattici WHERE [Id_Materiale_PK] = @ID", connection))
+        #region FILE TO BINARY
+
+            public bool databaseFilePut(string varFilePath, string nome)
             {
-                connection.Open();
-                sqlQuery.Parameters.AddWithValue("@ID", Nome);
-                using (var sqlQueryResult = sqlQuery.ExecuteReader())
+                bool esito = false;
+
+                //dichiara un array di byte
+                byte[] file;
+
+                //istanzia il "convertitore"
+                using (var stream = new FileStream(varFilePath, FileMode.Open, FileAccess.Read))
                 {
-                    if (sqlQueryResult != null)
+                    using (var reader = new BinaryReader(stream))
                     {
-                        sqlQueryResult.Read();
-                        var blob = new Byte[(sqlQueryResult.GetBytes(0, 0, null, 0, int.MaxValue))];
-                        sqlQueryResult.GetBytes(0, 0, blob, 0, blob.Length);
-                        try
+                        //legge il file, e lo converte
+                        file = reader.ReadBytes((int)stream.Length);
+                    }
+
+                    //invia il file al DB
+                    using (SqlConnection connection = new SqlConnection(StringaDiConnessione))
+                    {
+                        using (var sqlWrite = new SqlCommand("INSERT INTO Materiali_Didattici (Materiale, Tipo) Values(@File,@Tipo)", connection))
                         {
-                            //new FileStream()
-                            using (var fs = new FileStream(varPathToNewLocation, FileMode.Create, FileAccess.Write))
+                            connection.Open();
+                            sqlWrite.Parameters.Add("@File", SqlDbType.VarBinary, file.Length).Value = file;
+                            sqlWrite.Parameters.Add("@Tipo", SqlDbType.VarChar, nome.Length).Value = nome;
+                            esito = sqlWrite.ExecuteNonQuery() > 0;
+                            connection.Close();
+                            return esito;
+                        }
+                    }
+
+                }
+            }
+
+        #endregion
+
+        #region BINARY TO FILE
+        
+            public bool databaseFileRead(string Nome, string varPathToNewLocation)
+            {
+                
+                bool esito = false;
+
+                using (SqlConnection connection = new SqlConnection(StringaDiConnessione))
+                using (var sqlQuery = new SqlCommand(@"SELECT Materiale FROM [Materiali_Didattici WHERE [Id_Materiale_PK] = @ID", connection))
+                {
+                    connection.Open();
+                    sqlQuery.Parameters.AddWithValue("@ID", Nome);
+                    using (var sqlQueryResult = sqlQuery.ExecuteReader())
+                    {
+                        if (sqlQueryResult != null)
+                        {
+                            sqlQueryResult.Read();
+                            var blob = new Byte[(sqlQueryResult.GetBytes(0, 0, null, 0, int.MaxValue))];
+                            sqlQueryResult.GetBytes(0, 0, blob, 0, blob.Length);
+                            try
                             {
-                                fs.Write(blob, 0, blob.Length);
+                                //new FileStream()
+                                using (var fs = new FileStream(varPathToNewLocation, FileMode.Create, FileAccess.Write))
+                                {
+                                    fs.Write(blob, 0, blob.Length);
+                                }
+
+                                esito = true;
+                            }
+                            catch (Exception)
+                            {
+                                esito = false;
                             }
 
-                            esito = true;
                         }
-                        catch (Exception)
-                        {
-                            esito = false;
-                        }
-
                     }
+
+                    connection.Close();
                 }
-
-                connection.Close();
+                return esito;
             }
-            return esito;
-        }
-    #endregion
+        #endregion
 
-    #region BINARY TO WEB
+        #region BINARY TO WEB
 
         public byte[] getFileDB(int Id)
         {
