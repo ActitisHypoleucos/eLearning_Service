@@ -129,7 +129,7 @@ namespace eLearningService.Models.Services
         }
     #endregion
         #region Stored Procedures
-        public DataTable OttieniADMIN_Filtro_CorsiAssegnati(List<string> parametri,List<string> valori)
+        DataTable IQuery.OttieniADMIN_Filtro_CorsiAssegnati(List<string> parametri,List<string> valori)
         {
             CLS_DB dibbi = new CLS_DB();
             DataTable tabbola = dibbi.StorePExe("SELECT", "Filtro_ADMIN_CorsiNonAssegnati", parametri, valori);
@@ -137,7 +137,7 @@ namespace eLearningService.Models.Services
         }
         
 
-        public DataTable OttieniADMIN_Filtro_Corsisti(List<string> parametri,List<string> valori)
+        DataTable IQuery.OttieniADMIN_Filtro_Corsisti(List<string> parametri,List<string> valori)
         {
             CLS_DB dibbi = new CLS_DB();
             /*
@@ -148,17 +148,16 @@ namespace eLearningService.Models.Services
             return tabbola;
         }
         
-        public DataTable OttieniADMIN_Filtro_Corso(List<string> parametri,List<string> valori)
+        DataTable IQuery.OttieniADMIN_Filtro_Corso(List<string> parametri,List<string> valori)
         {
             CLS_DB dibbi = new CLS_DB();
              /*
                 parametri.Add("@stato1"); valori.Add("attivo");
                 parametri.Add("@stato2"); valori.Add("allontanato");
             */
-            DataTable tabbola = dibbi.MySelect("SELECT * FROM Filtro_ADMIN_Corso");
+            DataTable tabbola = dibbi.StorePExe("SELECT", "Filtro_ADMIN_Corso", parametri, valori);
             return tabbola;
         }
-
         #endregion
         #endregion
         //creare le funzioni di servizio

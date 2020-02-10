@@ -177,9 +177,9 @@ namespace eLearningService.Controllers
             }
         #endregion
         #region Filtri
-            public JsonResult Filtro_CorsiAssegnati()
+            public JsonResult Filtro_CorsiAssegnati(List<string> parametri,List<string> valori)
             {
-                DataTable tabbola = _query.OttieniADMIN_Filtro_CorsiAssegnati();
+                DataTable tabbola = _query.OttieniADMIN_Filtro_CorsiAssegnati(parametri, valori);
                 List<ADMIN_Filtro_CorsiAssegnatiViewModel> list = new List<ADMIN_Filtro_CorsiAssegnatiViewModel>();
                 foreach (DataRow riga in tabbola.Rows)
                 {
@@ -189,9 +189,9 @@ namespace eLearningService.Controllers
                 return Json(list);
             }
 
-            public JsonResult Filtro_Corsisti()
+            public JsonResult Filtro_Corsisti(List<string> parametri,List<string> valori)
             {
-                DataTable tabbola = _query.OttieniADMIN_Filtro_Corsisti();
+                DataTable tabbola = _query.OttieniADMIN_Filtro_Corsisti(parametri, valori);
                 List<ADMIN_Filtro_CorsistiViewModel> list = new List<ADMIN_Filtro_CorsistiViewModel>();
                 foreach (DataRow riga in tabbola.Rows)
                 {
@@ -201,9 +201,9 @@ namespace eLearningService.Controllers
                 return Json(list);
             }
 
-            public JsonResult Filtro_Corso()
+            public JsonResult Filtro_Corso(List<string> parametri,List<string> valori)
                     {
-                        DataTable tabbola = _query.OttieniADMIN_Filtro_Corso();
+                        DataTable tabbola = _query.OttieniADMIN_Filtro_Corso(parametri,valori);
                         List<ADMIN_Filtro_CorsoViewModel> list = new List<ADMIN_Filtro_CorsoViewModel>();
                         foreach (DataRow riga in tabbola.Rows)
                         {

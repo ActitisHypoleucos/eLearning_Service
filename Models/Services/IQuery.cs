@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Data;
 namespace eLearningService.Models.Services
 {
@@ -24,11 +25,11 @@ namespace eLearningService.Models.Services
                 DataTable OttioniADMINTest_ListaTest();
             #endregion
             #region Stored Procedures
-                DataTable OttieniADMIN_Filtro_CorsiAssegnati();
-                DataTable OttieniADMIN_Filtro_Corsisti();
-                DataTable OttieniADMIN_Filtro_Corso();
-                
-            #endregion
-         #endregion
+                DataTable OttieniADMIN_Filtro_CorsiAssegnati(List<string> parametri,List<string> valori);
+                DataTable OttieniADMIN_Filtro_Corsisti(List<string> parametri,List<string> valori);
+                DataTable OttieniADMIN_Filtro_Corso(List<string> parametri,List<string> valori);
+
+        #endregion
+        #endregion
     }
 }
