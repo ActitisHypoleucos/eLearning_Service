@@ -31,7 +31,7 @@ namespace eLearningService.Controllers
                 return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         #endregion
-        #region base    
+        #region base
             public JsonResult IndexCorsi()
             {
                 DataTable tabbola = _query.OttieniCorsi();
@@ -60,11 +60,6 @@ namespace eLearningService.Controllers
                 }
                 return Json(list);      
             }
-        #endregion
-        
-        
-        
-        
-        
+        #endregion 
     }
 }

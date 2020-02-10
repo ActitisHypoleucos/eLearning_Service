@@ -3,11 +3,11 @@ namespace eLearningService.Models.Services
 {
     public interface IQuery
     {
-         #region SINGLE ELEMENT
+        #region SINGLE ELEMENT
         DataTable OttieniCorsi();
         DataTable OttieniPNG();
         #endregion
-         #region ADMIN
+        #region ADMIN
             #region Views
                 DataTable OttieniADMINDashboard_Corsi();
                 DataTable OttieniADMINDashboard_Corsisti();
@@ -18,19 +18,16 @@ namespace eLearningService.Models.Services
                 DataTable OttieniADMINLezione_ListaLezioni();
                 DataTable OttieniADMINLezione_ListaMateriali();
                 DataTable OttieniADMINLezione_ListaModuli();
-                DataTable OttieniADMINLezione_Test();
                 DataTable OttieniADMINLezione_ListaCorsi();
+                DataTable OttieniADMINLezione_Test();
                 DataTable OttieniADMINTest_ListaCorsisti();
                 DataTable OttioniADMINTest_ListaTest();
             #endregion
             #region Stored Procedures
                 DataTable OttieniADMIN_Filtro_CorsiAssegnati();
-                DataTable OttieniADMIN_Filtro_CorsiNonAssegnati();
-                DataTable OttieniADMIN_Filtro_Corsisti_Attivi();
-                DataTable OttieniADMIN_Filtro_Corsisti_Allontanati();
                 DataTable OttieniADMIN_Filtro_Corsisti();
-                //DataTable OttieniADMIN_Filtro_Corso();
-                //DataTable OttieniADMINLezioni_ListaCorsi();
+                DataTable OttieniADMIN_Filtro_Corso();
+                
             #endregion
          #endregion
     }

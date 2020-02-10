@@ -129,76 +129,36 @@ namespace eLearningService.Models.Services
         }
     #endregion
         #region Stored Procedures
-        public DataTable OttieniADMIN_Filtro_CorsiAssegnati()
+        public DataTable OttieniADMIN_Filtro_CorsiAssegnati(List<string> parametri,List<string> valori)
         {
             CLS_DB dibbi = new CLS_DB();
-            List<string> parametri = new List<string>();
-            List<string> valori = new List<string>();
-            parametri.Add("@var"); valori.Add("profassegnato");
             DataTable tabbola = dibbi.StorePExe("SELECT", "Filtro_ADMIN_CorsiNonAssegnati", parametri, valori);
             return tabbola;
         }
-        public DataTable OttieniADMIN_Filtro_CorsiNonAssegnati()
-        {
-            CLS_DB dibbi = new CLS_DB();List<string> parametri = new List<string>();
-            List<string> valori = new List<string>();
-            parametri.Add("@var"); valori.Add("");
-            DataTable tabbola = dibbi.StorePExe("SELECT", "Filtro_ADMIN_CorsiNonAssegnati", parametri, valori);
-            return tabbola;
-        }
+        
 
-        public DataTable OttieniADMIN_Filtro_Corsisti_Attivi()
+        public DataTable OttieniADMIN_Filtro_Corsisti(List<string> parametri,List<string> valori)
         {
-            CLS_DB dibbi = new CLS_DB();List<string> parametri = new List<string>();
-            List<string> valori = new List<string>();
-            parametri.Add("@stato1"); valori.Add("attivo");
-            parametri.Add("@stato2"); valori.Add("");
+            CLS_DB dibbi = new CLS_DB();
+            /*
+                parametri.Add("@stato1"); valori.Add("attivo");
+                parametri.Add("@stato2"); valori.Add("allontanato");
+            */
             DataTable tabbola = dibbi.StorePExe("SELECT", "Filtro_ADMIN_Corsisti", parametri, valori);
             return tabbola;
         }
-
-        public DataTable OttieniADMIN_Filtro_Corsisti_Allontanati()
-        {
-            CLS_DB dibbi = new CLS_DB();List<string> parametri = new List<string>();
-            List<string> valori = new List<string>();
-            parametri.Add("@stato1"); valori.Add("");
-            parametri.Add("@stato2"); valori.Add("allontanato");
-            DataTable tabbola = dibbi.StorePExe("SELECT", "Filtro_ADMIN_Corsisti", parametri, valori);
-            return tabbola;
-        }
-
-        public DataTable OttieniADMIN_Filtro_Corsisti()
-        {
-            CLS_DB dibbi = new CLS_DB();List<string> parametri = new List<string>();
-            List<string> valori = new List<string>();
-            parametri.Add("@stato1"); valori.Add("attivo");
-            parametri.Add("@stato2"); valori.Add("allontanato");
-            DataTable tabbola = dibbi.StorePExe("SELECT", "Filtro_ADMIN_Corsisti", parametri, valori);
-            return tabbola;
-        }
-
-        /*
-        public DataTable OttieniADMIN_Filtro_Corsisti()
+        
+        public DataTable OttieniADMIN_Filtro_Corso(List<string> parametri,List<string> valori)
         {
             CLS_DB dibbi = new CLS_DB();
-            DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Test_ListaTest");
+             /*
+                parametri.Add("@stato1"); valori.Add("attivo");
+                parametri.Add("@stato2"); valori.Add("allontanato");
+            */
+            DataTable tabbola = dibbi.MySelect("SELECT * FROM Filtro_ADMIN_Corso");
             return tabbola;
         }
 
-        public DataTable OttieniADMIN_Filtro_Corso()
-        {
-            CLS_DB dibbi = new CLS_DB();
-            DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Test_ListaTest");
-            return tabbola;
-        }
-
-        public DataTable OttieniADMINLezioni_ListaCorsi()
-        {
-            CLS_DB dibbi = new CLS_DB();
-            DataTable tabbola = dibbi.MySelect("SELECT * FROM ADMIN_Test_ListaTest");
-            return tabbola;
-        }
-        */
         #endregion
         #endregion
         //creare le funzioni di servizio
