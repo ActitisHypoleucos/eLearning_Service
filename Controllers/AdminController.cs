@@ -179,6 +179,8 @@ namespace eLearningService.Controllers
         #region Filtri
             public JsonResult Filtro_CorsiAssegnati(List<string> parametri,List<string> valori)
             {
+                parametri.Add("@stato1"); 
+                // valori.Add("profassegnato");
                 DataTable tabbola = _query.OttieniADMIN_Filtro_CorsiAssegnati(parametri, valori);
                 List<ADMIN_Filtro_CorsiAssegnatiViewModel> list = new List<ADMIN_Filtro_CorsiAssegnatiViewModel>();
                 foreach (DataRow riga in tabbola.Rows)
@@ -191,6 +193,8 @@ namespace eLearningService.Controllers
 
             public JsonResult Filtro_Corsisti(List<string> parametri,List<string> valori)
             {
+                parametri.Add("@stato1"); parametri.Add("@stato2");
+                // valori.Add("attivo"); parametri.Add("allontanato");
                 DataTable tabbola = _query.OttieniADMIN_Filtro_Corsisti(parametri, valori);
                 List<ADMIN_Filtro_CorsistiViewModel> list = new List<ADMIN_Filtro_CorsistiViewModel>();
                 foreach (DataRow riga in tabbola.Rows)
@@ -202,16 +206,18 @@ namespace eLearningService.Controllers
             }
 
             public JsonResult Filtro_Corso(List<string> parametri,List<string> valori)
-                    {
-                        DataTable tabbola = _query.OttieniADMIN_Filtro_Corso(parametri,valori);
-                        List<ADMIN_Filtro_CorsoViewModel> list = new List<ADMIN_Filtro_CorsoViewModel>();
-                        foreach (DataRow riga in tabbola.Rows)
-                        {
-                            ADMIN_Filtro_CorsoViewModel item = new ADMIN_Filtro_CorsoViewModel(riga); 
-                            list.Add(item);
-                        }
-                        return Json(list);
-                    }
+            {
+                parametri.Add("@stato1"); parametri.Add("@stato2"); parametri.Add("@stato3");
+                // valori.Add("attivo"); valori.Add("concluso"); valori.Add("annullato");
+                DataTable tabbola = _query.OttieniADMIN_Filtro_Corso(parametri,valori);
+                List<ADMIN_Filtro_CorsoViewModel> list = new List<ADMIN_Filtro_CorsoViewModel>();
+                foreach (DataRow riga in tabbola.Rows)
+                {
+                    ADMIN_Filtro_CorsoViewModel item = new ADMIN_Filtro_CorsoViewModel(riga); 
+                    list.Add(item);
+                }
+                return Json(list);
+            }
         #endregion 
     }
 }
